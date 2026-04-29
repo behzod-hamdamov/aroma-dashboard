@@ -115,7 +115,7 @@ export const LoginPage = () => {
       </div>
       <Footer
         text={"© 2024 Aroma. All Rights Reserved."}
-        textColor={"--theme-color-gray"}
+        textColor={"brand"}
       />
     </div>
   );

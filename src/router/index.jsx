@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router";
 
 // o'zgarmas constantalar
-import { ROUTES } from "./routes";
+import { ROUTES } from "./routes/routes";
 
 // sahifalar
-import { LoginPage } from "../pages/";
+import { LoginPage, HomePage } from "@pages/";
+import { ProtectedRoute } from "./routes/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <></>,
+    element: <ProtectedRoute />,
+    children: [<HomePage />],
   },
 ])
