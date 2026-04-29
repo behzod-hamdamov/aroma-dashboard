@@ -1,23 +1,29 @@
 import { useCallback, useState } from "react";
 
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { Eye as EyeIcon, EyeOff as EyeOfffIcon } from "lucide-react";
 
-import { useLogin } from "@hooks";
+import { useForm, useLogin } from "@hooks";
 
 import aromaLogoIcon from "@icons/aroma-logo-icon.svg";
 
 import { styles } from "./styles";
 
+import { ToastContainer } from "react-toastify";
 
 const ErrorText = () => {
-  return <span className={`${styles.error_text + " " + styles.error_shape}`}>To'ldirilishi shart</span>
-}
+  return (
+    <span className={`${styles.error_text + " " + styles.error_shape}`}>
+      To'ldirilishi shart
+    </span>
+  );
+};
 
 export const LoginPage = () => {
-  const [hidePassword, setHidePassword] = useState(false);
-  const {values, errors, handleChange, validate} = useLogin()
+  const [hidePassword, setHidePassword] = useState(true);
+  const { values, errors, handleChange, validate } = useForm();
+  const navigate = useNavigate()
 
   const handleHide = useCallback((e) => {
     e.preventDefault();
@@ -25,12 +31,22 @@ export const LoginPage = () => {
   }, []);
 
   const handleClick = useCallback((e) => {
-    e.preventDefault()
-    validate()
-  })
+    e.preventDefault();
+    const validated = validate();
+    if (validated) handleLogin();
+  }, [values]);
+
+  const handleLogin = useCallback(async () => {
+    const data = await useLogin({
+      username: values.login,
+      password: values.password,
+    });
+    if (data?.success === true) navigate("/")
+  }, [values]);
 
   return (
     <div className="flex items-center justify-center grow">
+      <ToastContainer limit={2} newestOnTop />
       <div className="flex flex-col max-w-120 w-full gap-6 items-center">
         <Link to="/">
           <img src={aromaLogoIcon} alt="logo" />
@@ -46,7 +62,7 @@ export const LoginPage = () => {
             <label htmlFor="input-login" className={`${styles.input_label}`}>
               Login
             </label>
-            {errors.login && <ErrorText/>}
+            {errors.login && <ErrorText />}
             <input
               type="text"
               onChange={handleChange}
@@ -60,7 +76,7 @@ export const LoginPage = () => {
             <label htmlFor="input-password" className={`${styles.input_label}`}>
               Parol
             </label>
-            {errors.password && <ErrorText/>}
+            {errors.password && <ErrorText />}
             <input
               type={`${hidePassword ? "password" : "text"}`}
               onChange={handleChange}
@@ -85,7 +101,9 @@ export const LoginPage = () => {
               )}
             </button>
           </div>
-          <button className={`${styles.form_btn}`} onClick={handleClick}>Sign in</button>
+          <button className={`${styles.form_btn}`} onClick={handleClick}>
+            Sign in
+          </button>
         </form>
       </div>
     </div>

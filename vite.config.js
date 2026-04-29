@@ -8,7 +8,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@icons": path.resolve(__dirname, "./src/assets/icons"),
-      "@hooks": path.resolve(__dirname, "./src/hooks/")
+      "@hooks": path.resolve(__dirname, "./src/hooks/"),
+      "@api": path.resolve(__dirname, "./src/api/"),
+      "@utils": path.resolve(__dirname, "./src/utils/")
     }
   },
   plugins: [react(), tailwindcss()],

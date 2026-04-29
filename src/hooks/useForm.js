@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const useLogin = () => {
+export const useForm = () => {
   const [values, setValues] = useState({login: "", password: ""})
   const [errors, setErrors] = useState({login: false, password: false})
   const [validated, setvalidated] = useState(false)
