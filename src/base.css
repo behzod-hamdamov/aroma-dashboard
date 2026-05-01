@@ -23,7 +23,8 @@
     --border-color: rgba(219, 223, 234, 1);
 
     /* typhography ranglari */
-    --body-color-login-form: rgba(82, 100, 132, 1);
+    --body-color: rgba(82, 100, 132, 1);
+    --color-none: white;
   }
 
   body {

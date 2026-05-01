@@ -1,5 +1,7 @@
+import { styles } from "./styles"
+
 export const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div className={`${styles.home_page}`}>HomePage</div>
   )
 }
