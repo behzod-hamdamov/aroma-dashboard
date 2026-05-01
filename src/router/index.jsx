@@ -6,6 +6,7 @@ import { ROUTES } from "./routes/routes";
 // sahifalar
 import { LoginPage, HomePage } from "@pages/";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
+import { MainLayout } from "@layouts/";
 
 export const router = createBrowserRouter([
   {
@@ -13,8 +14,17 @@ export const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/",
     element: <ProtectedRoute />,
-    children: [<HomePage />],
+    children: [
+      {
+        element: <MainLayout/>,
+        children: [
+          {
+            path: "/",
+            element: <HomePage />,
+          }
+        ]
+      }
+    ],
   },
 ])
