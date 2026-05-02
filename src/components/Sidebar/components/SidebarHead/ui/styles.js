@@ -1,11 +1,11 @@
 export const styles = {
   sidebar_head: "p-3.5 shrink-0 w-full flex items-center justify-between",
-  logo_icon: "group-hover:h-10 min-w-12 min-h-12 border-2 border-(--brand-color) rounded-full p-0.5 shrink-0",
+  logo_icon: "group-hover:h-10 min-w-12 min-h-12 border-2 border-(--brand-color) rounded-full p-0.5 shrink-0 delay-300",
   burger_icon: "opacity-0 invisible duration-300 cursor-pointer",
 
   //hover classlari
   hover_sidebar_head: "group-hover:p-[12px_24px]",
-  hover_logo_icon: "group-hover:w-19.5 group-hover:rounded-none group-hover:border-0",
+  hover_logo_icon: "group-hover:w-19.5 group-hover:rounded-none group-hover:border-0 group-hover:delay-0",
   hover_burger_icon: "group-hover:opacity-100 group-hover:visible",
 
   //show classlari

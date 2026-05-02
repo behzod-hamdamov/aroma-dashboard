@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { SidebarHead } from "../components"
+import { SidebarHead, SidebarLinks } from "../components"
 
 import { styles } from "./styles"
 
@@ -10,6 +10,7 @@ export const Sidebar = () => {
     <div className={`${styles.sidebar} ${showNavbar ? styles.show_sidebar : ""}`}>
       <nav className={`${styles.nav} ${showNavbar ? styles.show_nav : styles.hover_nav}`}>
         <SidebarHead show={showNavbar} setShowNavbar={setShowNavbar} />
+        <SidebarLinks  show={showNavbar} />
       </nav>
     </div>
   )
