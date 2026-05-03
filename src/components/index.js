@@ -1,2 +1,3 @@
-export * from "./Footer/ui/Footer"
+export * from "./Footer/"
 export * from "./Sidebar/"
+export * from "./Header/"
