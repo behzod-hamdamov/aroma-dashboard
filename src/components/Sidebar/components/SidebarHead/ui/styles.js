@@ -1,5 +1,5 @@
 export const styles = {
-  sidebar_head: "p-3.5 shrink-0 w-full flex items-center justify-between",
+  sidebar_head: "p-3.5 shrink-0 w-full flex items-center justify-between h-[76px]",
   logo_icon: "group-hover:h-10 min-w-12 min-h-12 border-2 border-(--brand-color) rounded-full p-0.5 shrink-0 delay-300",
   burger_icon: "opacity-0 invisible duration-300 cursor-pointer",
 

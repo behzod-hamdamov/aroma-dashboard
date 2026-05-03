@@ -1,6 +1,13 @@
 import { memo } from "react";
 
+import { NavLink } from "react-router";
+
 import { styles } from "./styles";
+
+import { links } from "../links/links";
+
+import { SidebarLink } from "./SidebarLink";
+import { SidebarDropLink } from "./SidebarDropLink";
 
 export const SidebarLinks = memo(({ show }) => {
   return (
@@ -13,6 +20,13 @@ export const SidebarLinks = memo(({ show }) => {
         Boshqaruv paneli
       </h4>
       <ul className={`${styles.ul}`}>
+        {links.map((link, i) =>
+          link.path ? (
+            <SidebarLink link={link} key={i} show={show} styles={styles} />
+          ) : (
+            <SidebarDropLink link={link} key={i} show={show} styles={styles} />
+          )
+        )}
       </ul>
     </div>
   );

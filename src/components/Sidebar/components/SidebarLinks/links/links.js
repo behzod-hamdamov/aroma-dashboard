@@ -12,48 +12,48 @@ import {
 
 export const links = [
   {
-    icon: <GrowthIcon />,
+    icon: GrowthIcon,
     title: "Asosiy",
     path: "/"
   },
   {
-    icon: <TileThumbIcon />,
+    icon: TileThumbIcon,
     title: "Filiallar",
     path: "/branches"
   },
   {
-    icon: <UsersIcon />,
-    title: "Kuriyerlar",
-    path: "/couriers"
-  },
-  {
-    icon: <CardICon />,
+    icon: CardICon,
     title: "Bannerlar",
     path: "/banners"
   },
   {
-    icon: <GridIcon />,
+    icon: UsersIcon,
+    title: "Kuriyerlar",
+    path: "/couriers"
+  },
+  {
+    icon: GridIcon,
     title: "Mijozlar",
     path: "/clients"
   },
   {
-    icon: <FileDocsIcon />,
+    icon: FileDocsIcon,
     title: "Adminlar",
     path: "/admins"
   },
   {
-    icon: <CardViewIcon />,
+    icon: CardViewIcon,
     title: "Buyurtmalar",
     path: "/orders"
   },
   {
-    icon: <CoinsIcon />,
+    icon: CoinsIcon,
     title: "Tranzaksiyalar",
     path: "/transactions"
   },
   {
-    icon: <ImgIcon />,
-    title: "boshqalar",
+    icon: ImgIcon,
+    title: "Boshqalar",
     childrens: [
       {
         title: "Bildirishnomalar",
