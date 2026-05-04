@@ -1,40 +1,34 @@
 import { useState } from "react"
 
-export const useForm = () => {
-  const [values, setValues] = useState({login: "", password: ""})
-  const [errors, setErrors] = useState({login: false, password: false})
-  const [validated, setvalidated] = useState(false)
+export const useForm = (formStucture, onSubmit) => {
+  const [formData, setFormData] = useState(formStucture)
+  const [formErrors, setFormErrors] = useState({})
 
-  const validate = () => {
-    let isReady = true
-    if (!values.login.length) {
-      setErrors(prev => ({...prev, login: true}))
-      isReady = false
-    }
-    if (!values.password.length) {
-      setErrors(prev => ({...prev, password: true}))
-      isReady = false
+  const handleValidate = () => {
+    let completed = true
+
+    for (const key in formData) {
+      if (formData[key] === "") {
+        setFormErrors(prev => ({ ...prev, [key]: true }))
+        completed = false
+      }
     }
 
-    setvalidated(true)
-    return isReady
+    return completed
   }
 
-  const handleChange = (e) => {
-    const inputValue = e.target.value
-    setValues(prev => ({...prev, [e.target.name]: e.target.value }))
-    
-    if (!inputValue.length && validated) {
-      setErrors(prev => ({...prev, [e.target.name]: true}))
-      return
-    }
+  const handleInputChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value.trimStart() }))
+    setFormErrors(prev => ({ ...prev, [e.target.name]: false }))
+  }
 
-    if (e.target.name === "login" && errors.login && inputValue) {
-      setErrors(prev => ({...prev, login: false}))
-    } else if (e.target.name === "password" && errors.password && inputValue) {
-      setErrors(prev => ({...prev, password: false}))
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const completed = handleValidate()
+    if (completed) {
+      onSubmit?.(formData)
     }
   }
 
-  return {values, errors, handleChange, validate}
+  return { formData, formErrors, handleInputChange, handleSubmit }
 }

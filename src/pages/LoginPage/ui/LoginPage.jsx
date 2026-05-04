@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router";
 
 import { Eye as EyeIcon, EyeOff as EyeOfffIcon } from "lucide-react";
 
-import { useForm, useLogin } from "@hooks";
+import { useLogin, useForm } from "@hooks";
 
 import { Footer } from "@components/Footer/ui/Footer";
 
@@ -22,27 +22,27 @@ const ErrorText = () => {
 
 export const LoginPage = () => {
   const [hidePassword, setHidePassword] = useState(true);
-  const { values, errors, handleChange, validate } = useForm();
-  const navigate = useNavigate()
+  const { formData, formErrors, handleInputChange, handleSubmit } = useForm(
+    {
+      login: "",
+      password: "",
+    },
+    handleLogin
+  );
+  const navigate = useNavigate();
 
   const handleHide = useCallback((e) => {
     e.preventDefault();
     setHidePassword((prev) => !prev);
   }, []);
 
-  const handleClick = useCallback((e) => {
-    e.preventDefault();
-    const validated = validate();
-    if (validated) handleLogin();
-  }, [values]);
-
-  const handleLogin = useCallback(async () => {
+  async function handleLogin () {
     const data = await useLogin({
-      username: values.login,
-      password: values.password,
+      username: formData.login,
+      password: formData.password,
     });
     if (data?.success === true) navigate("/");
-  }, [values]);
+  };
 
   return (
     <div className="flex grow flex-col">
@@ -51,7 +51,7 @@ export const LoginPage = () => {
           <Link to="/">
             <img src={aromaLogoIcon} alt="logo" />
           </Link>
-          <form className={`${styles.form}`}>
+          <form className={`${styles.form}`} onSubmit={handleSubmit}>
             <div className={`${styles.col_box}`}>
               <h3 className={`${styles.heading_3}`}>Kirish</h3>
               <p className={`${styles.paragraph}`}>
@@ -62,10 +62,10 @@ export const LoginPage = () => {
               <label htmlFor="input-login" className={`${styles.input_label}`}>
                 Login
               </label>
-              {errors.login && <ErrorText />}
+              {formErrors.login && <ErrorText />}
               <input
                 type="text"
-                onChange={handleChange}
+                onChange={handleInputChange}
                 placeholder="Login kiriting"
                 name="login"
                 id="input-login"
@@ -79,10 +79,10 @@ export const LoginPage = () => {
               >
                 Parol
               </label>
-              {errors.password && <ErrorText />}
+              {formErrors.password && <ErrorText />}
               <input
                 type={`${hidePassword ? "password" : "text"}`}
-                onChange={handleChange}
+                onChange={handleInputChange}
                 placeholder="Parol kiriting"
                 name="password"
                 id="input-password"
@@ -104,16 +104,13 @@ export const LoginPage = () => {
                 )}
               </button>
             </div>
-            <button className={`${styles.form_btn}`} onClick={handleClick}>
+            <button className={`${styles.form_btn}`}>
               Sign in
             </button>
           </form>
         </div>
       </div>
-      <Footer
-        text={"© 2024 Aroma. All Rights Reserved."}
-        textColor={"brand"}
-      />
+      <Footer text={"© 2024 Aroma. All Rights Reserved."} textColor={"brand"} />
     </div>
   );
 };
