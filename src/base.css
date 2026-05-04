@@ -1,5 +1,5 @@
 @layer base {
-  #root {
+  #root, #portal-root {
     /* font o'zgaruvchilari */
     --font-nunito: "Nunito", sans-serif;
     --font-roboto: "ROboto", sans-serif;

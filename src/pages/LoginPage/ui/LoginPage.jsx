@@ -12,8 +12,6 @@ import aromaLogoIcon from "@icons/aroma-logo-icon.svg";
 
 import { styles } from "./styles";
 
-import { ToastContainer } from "react-toastify";
-
 const ErrorText = () => {
   return (
     <span className={`${styles.error_text + " " + styles.error_shape}`}>
@@ -49,7 +47,6 @@ export const LoginPage = () => {
   return (
     <div className="flex grow flex-col">
       <div className="flex items-center justify-center grow">
-        <ToastContainer limit={2} newestOnTop />
         <div className="flex flex-col max-w-120 w-full gap-6 items-center">
           <Link to="/">
             <img src={aromaLogoIcon} alt="logo" />
