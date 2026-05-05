@@ -16,6 +16,7 @@ export default defineConfig({
       "@router": path.resolve(__dirname, "./src/router"),
       "@layouts": path.resolve(__dirname, "./src/layouts"),
       "@icon-components": path.resolve(__dirname, "./src/components/icons"),
+      "@store": path.resolve(__dirname, "./src/store")
     }
   },
   plugins: [react(), tailwindcss()],

@@ -1,10 +1,6 @@
-import { api } from "@api/axios"
+import { api, endpoints } from "@api"
 
-import { endpoints } from "@api/endpoints"
-
-import { tokenService } from "@utils/tokenService"
-
-import { toast } from "react-toastify"
+import { tokenService, Toast } from "@utils"
 
 export const useLogin = async (loginData) => {
   try {
@@ -12,16 +8,7 @@ export const useLogin = async (loginData) => {
     tokenService.setTokens(data.data.token, data.data.refreshToken)
     return data
   } catch (error) {
-    toast.error(error.response.data.error.message, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })
+    Toast.error(error.response.data.error.message)
   }
 }
 
