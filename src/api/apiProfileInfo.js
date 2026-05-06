@@ -2,6 +2,8 @@ import { api } from "./axios"
 
 import { endpoints } from "./endpoints"
 
+import { Toast } from "@utils"
+
 export const apiProfileInfo = async () => {
   try {
     const { data } = await api.get(endpoints.profile.profile_info)
