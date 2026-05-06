@@ -5,11 +5,10 @@ import { useCallback, useEffect, useState } from "react";
 import { profileStore } from "@store";
 
 import { Loader } from "@components/Loader";
-import { HeaderDropdown } from "../components/HeaderDropdown";
-
-import { UserIcon } from "../icons/";
+import { HeaderDropdown } from "../components/";
 
 import { ArrowRightIcon } from "@components/icons"
+import { UserIcon } from "../icons/";
 
 export const Header = () => {
   const { user, isLoading, apiProfile } = profileStore();

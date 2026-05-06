@@ -25,9 +25,8 @@ export const useForm = (formStucture, onSubmit) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const completed = handleValidate()
-    if (completed) {
-      onSubmit?.(formData)
-    }
+    const data = Object.fromEntries(new FormData(e.target))
+    if (completed) onSubmit?.(data)
   }
 
   return { formData, formErrors, handleInputChange, handleSubmit }

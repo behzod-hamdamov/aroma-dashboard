@@ -22,7 +22,7 @@ const ErrorText = () => {
 
 export const LoginPage = () => {
   const [hidePassword, setHidePassword] = useState(true);
-  const { formData, formErrors, handleInputChange, handleSubmit } = useForm(
+  const { formErrors, handleInputChange, handleSubmit } = useForm(
     {
       login: "",
       password: "",
@@ -36,10 +36,10 @@ export const LoginPage = () => {
     setHidePassword((prev) => !prev);
   }, []);
 
-  async function handleLogin () {
+  async function handleLogin (finalData) {
     const data = await useLogin({
-      username: formData.login,
-      password: formData.password,
+      username: finalData.login,
+      password: finalData.password,
     });
     if (data?.success === true) navigate("/");
   };
