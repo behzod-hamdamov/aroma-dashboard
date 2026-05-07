@@ -4,11 +4,13 @@ import { Link, useNavigate } from "react-router";
 
 import { Eye as EyeIcon, EyeOff as EyeOfffIcon } from "lucide-react";
 
-import { useLogin, useForm } from "@hooks";
+import { useForm } from "@hooks";
 
 import { Footer } from "@components/Footer/ui/Footer";
 
 import aromaLogoIcon from "@icons/aroma-logo-icon.svg";
+
+import { apiLogin } from "@api";
 
 import { styles } from "./styles";
 
@@ -37,7 +39,7 @@ export const LoginPage = () => {
   }, []);
 
   async function handleLogin (finalData) {
-    const data = await useLogin({
+    const data = await apiLogin({
       username: finalData.login,
       password: finalData.password,
     });

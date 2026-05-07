@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { profileStore } from "@store";
 
 import { Loader } from "@components/Loader";
-import { PasswordChangeModal } from "@modals";
+import { PasswordChangeModal, LogoutModal } from "@modals";
 import { HeaderDropdown } from "../components/";
 
 import { ArrowRightIcon } from "@components/icons";
@@ -25,11 +25,11 @@ export const Header = () => {
 
   const handleClick = () => {
     setDropdown((prev) => !prev);
-  }
+  };
 
   const handleModal = (modalName) => {
     setModals((prev) => ({ ...prev, [modalName]: !modals[modalName] }));
-  }
+  };
 
   return (
     <header className={`${styles.header}`}>
@@ -51,9 +51,18 @@ export const Header = () => {
           </div>
         )}
       </div>
-      {dropdown && <HeaderDropdown user={user} handleModal={handleModal} handleClick={handleClick} />}
+      {dropdown && (
+        <HeaderDropdown
+          user={user}
+          handleModal={handleModal}
+          handleClick={handleClick}
+        />
+      )}
       {modals.passwordModal && (
         <PasswordChangeModal handleModal={handleModal} />
+      )}
+      {modals.logoutModal && (
+        <LogoutModal handleModal={handleModal} />
       )}
       {isLoading && <Loader global />}
     </header>
