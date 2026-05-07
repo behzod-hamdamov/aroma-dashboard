@@ -8,6 +8,8 @@ export const InputPrimary = memo(({
   dataError,
   title,
   errorTitle = "To'ldirish majburiy",
+  handleInputChange,
+  className
 }) => {
   return (
     <div className={`${styles.style_input_box}`}>
@@ -18,8 +20,9 @@ export const InputPrimary = memo(({
         type={type}
         name={htmlFor}
         id={htmlFor}
-        data-error={dataError}
-        className={`${styles.style_input}`}
+        data-error={Boolean(dataError)}
+        className={`${styles.style_input} ${className}`}
+        onChange={handleInputChange}
       />
       {dataError && (
         <span className={`${styles.style_input_error_text}`}>{errorTitle}</span>

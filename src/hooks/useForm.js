@@ -29,5 +29,5 @@ export const useForm = (formStucture, onSubmit) => {
     if (completed) onSubmit?.(data)
   }
 
-  return { formData, formErrors, handleInputChange, handleSubmit }
+  return { setFormErrors, formErrors, handleInputChange, handleSubmit }
 }

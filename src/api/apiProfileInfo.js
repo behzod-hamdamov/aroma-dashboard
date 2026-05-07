@@ -9,6 +9,6 @@ export const apiProfileInfo = async () => {
     const { data } = await api.get(endpoints.profile.profile_info)
     return data
   } catch (error) {
-    Toast.error(error.response.data.error.message)
+    Toast.error(error?.response?.data?.error?.message)
   }
 }

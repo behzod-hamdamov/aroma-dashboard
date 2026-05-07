@@ -4,7 +4,33 @@ import { styles } from "@styles";
 
 import { InputPrimary } from "@inputs";
 
+import { useForm } from "@hooks";
+
+import { useState } from "react";
+
+import { apiChangePassword } from "@api";
+
 export const PasswordChangeModal = ({ handleModal }) => {
+  const { formErrors, setFormErrors, handleInputChange, handleSubmit } = useForm(
+    {
+      old_password: "",
+      password: "",
+      confirm_password: "",
+    },
+    onSubmit
+  );
+  const [matchingError, setMatchingError] = useState("")
+
+  async function onSubmit(formData) {
+    if (formData["password"] !== formData["confirm_password"]) {
+      setFormErrors(prev => ({...prev, ["confirm_password"]: true}))
+      setMatchingError("Parol bilan mos kelmadi")
+    } else {
+      const success = await apiChangePassword(formData)
+      if (success) handleModal("passwordModal")
+    }
+  }
+
   return (
     <Overlay
       handleClose={() => {
@@ -15,7 +41,9 @@ export const PasswordChangeModal = ({ handleModal }) => {
         className={`${styles.style_modal} max-w-296.75 w-full m-[0_24px] pt-9.5 pb-9.5`}
         onClick={(e) => {
           e.stopPropagation();
-          e.preventDefault();
+        }}
+        onSubmit={(e) => {
+          handleSubmit(e);
         }}
       >
         <h5 className={`${styles.style_modal_head_title} pb-4`}>
@@ -25,34 +53,42 @@ export const PasswordChangeModal = ({ handleModal }) => {
           <InputPrimary
             type="password"
             htmlFor="old_password"
-            dataError={false}
+            dataError={formErrors["old_password"]}
             title="Joriy parol"
+            handleInputChange={handleInputChange}
+            className="max-h-11"
           />
           <div className={`flex gap-5`}>
             <InputPrimary
               type="password"
               htmlFor="password"
-              dataError={false}
+              dataError={formErrors["password"]}
               title="Yangi parol"
+              handleInputChange={handleInputChange}
+              className="max-h-11"
             />
             <InputPrimary
               type="password"
               htmlFor="confirm_password"
-              dataError={false}
+              dataError={formErrors["confirm_password"]}
               title="Yangi parolni tasdiqlash"
+              errorTitle={matchingError || "To'ldirish majburiy"}
+              handleInputChange={handleInputChange}
+              className="max-h-11"
             />
           </div>
         </div>
-        <div className={`flex gap-5 items-center justify-end`} >
-          <button className={`${styles.style_button_secondary}`} onClick={(e) => {
-            handleModal("passwordModal")  
-            e.preventDefault()
-          }} >
+        <div className={`flex gap-5 items-center justify-end`}>
+          <button
+            className={`${styles.style_button_secondary}`}
+            onClick={(e) => {
+              handleModal("passwordModal");
+              e.preventDefault();
+            }}
+          >
             Bekor qilish
           </button>
-          <button className={`${styles.style_button_brand}`} >
-            Saqlash
-          </button>
+          <button className={`${styles.style_button_brand}`}>Saqlash</button>
         </div>
       </form>
     </Overlay>

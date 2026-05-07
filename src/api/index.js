@@ -1,3 +1,4 @@
 export * from "./axios"
 export * from "./endpoints"
 export * from "./apiProfileInfo"
+export * from "./apiChangePassword"

@@ -5,5 +5,6 @@ export const endpoints = {
   },
   profile: {
     profile_info: "/admin/profile/info",
+    profile_password_change: "/admin/profile/change/password",
   }
 }
