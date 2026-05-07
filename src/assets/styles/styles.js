@@ -10,4 +10,5 @@ export const styles = {
   style_modal_head_title: "font-(family-name:--font-roboto) leading-5.5 font-bold text-[20px] tracking-[-0.16px] font-(family-name:--font-roboto) text-(--theme-color-secondary)",
   style_input_error_text: "text-[11px] italic font-(--font-roboto) text-(--error-color)",
   style_modal_paragraph: "text-center font-normal text-[16px] leading-[23.1px] font-(family-name:--font-roboto) text-(--body-color)",
+  style_table_regular_head_title: "leading-8 font-(family-name:--font-nunito) text-[28px] font-bold tracking-[-0.84px] text-(--theme-color-secondary) mb-2",
 } 

@@ -4,7 +4,7 @@ import { createBrowserRouter } from "react-router";
 import { ROUTES } from "./routes/routes";
 
 // sahifalar
-import { LoginPage, HomePage, NotFoundPage } from "@pages/";
+import { LoginPage, HomePage, NotFoundPage, ProfileInfoPage } from "@pages/";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { MainLayout } from "@layouts/";
 
@@ -22,6 +22,10 @@ export const router = createBrowserRouter([
           {
             path: "/",
             element: <HomePage />,
+          },
+          {
+            path: "/profile-info",
+            element: <ProfileInfoPage />,
           }
         ]
       }

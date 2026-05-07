@@ -28,6 +28,7 @@
     /* typhography ranglari */
     --body-color: rgba(82, 100, 132, 1);
     --color-none: white;
+    --breadcrump-color: rgba(183, 194, 208, 1);
   }
 
   body {

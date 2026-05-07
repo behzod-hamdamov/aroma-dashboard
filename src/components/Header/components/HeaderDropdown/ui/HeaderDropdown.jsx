@@ -26,7 +26,11 @@ export const HeaderDropdown = memo(({ user, handleModal, handleClick }) => {
         </div>
       </li>
       <li className={`${styles.dropdown_options}`}>
-        <Link to="/profile-info" className={`${styles.dropdown_option}`}>
+        <Link
+          to="/profile-info"
+          className={`${styles.dropdown_option}`}
+          onClick={handleClick}
+        >
           Profil ma’lumot
         </Link>
         <button
