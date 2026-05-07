@@ -2,11 +2,13 @@ import { styles } from "./styles";
 
 import { Link } from "react-router";
 
+import { memo } from "react";
+
 import { UserIcon, ExitIcon } from "../../../icons";
 
 import { styles as parentStyles } from "../../../ui/styles";
 
-export const HeaderDropdown = ({ user }) => {
+export const HeaderDropdown = memo(({ user, handleModal, handleClick }) => {
   return (
     <ul className={`${styles.dropdown}`}>
       <li className={`${styles.dropdown_user_info}`}>
@@ -27,14 +29,28 @@ export const HeaderDropdown = ({ user }) => {
         <Link to="/profile-info" className={`${styles.dropdown_option}`}>
           Profil ma’lumot
         </Link>
-        <h5 className={`${styles.dropdown_option}`}>Parol o’zgartirish</h5>
+        <button
+          className={`${styles.dropdown_option}`}
+          onClick={() => {
+            handleModal("passwordModal");
+            handleClick();
+          }}
+        >
+          Parol o’zgartirish
+        </button>
       </li>
       <li className={`pt-2`}>
-        <div className={`${styles.dropdown_option}`}>
+        <button
+          className={`${styles.dropdown_option}`}
+          onClick={() => {
+            handleModal("logoutModal");
+            handleClick();
+          }}
+        >
           <ExitIcon />
           <h5 className="text-(--body-color)">Chiqish</h5>
-        </div>
+        </button>
       </li>
     </ul>
   );
-};
+});

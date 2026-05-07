@@ -20,6 +20,8 @@
     --bg-primary: rgba(245, 246, 250, 1);
     --bg-hover-color: rgb(235 238 242);
 
+    --bg-overlay: rgba(0, 0, 0, 0.4);
+
     /* border ranglari */
     --border-color: rgba(219, 223, 234, 1);
 
@@ -29,7 +31,7 @@
   }
 
   body {
-    img {
+    img, button {
       user-select: none;
     }
   }
