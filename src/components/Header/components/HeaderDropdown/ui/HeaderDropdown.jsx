@@ -11,8 +11,8 @@ import { styles as parentStyles } from "../../../ui/styles";
 import { profileStore, modalStore } from "@store"
 
 export const HeaderDropdown = memo(({ handleClick }) => {
-  const { openModal } = modalStore()
-  const { user } = profileStore()
+  const openModal = modalStore((s) => s.openModal)
+  const user = profileStore((s) => s.user)
 
   return (
     <ul className={`${styles.dropdown}`}>

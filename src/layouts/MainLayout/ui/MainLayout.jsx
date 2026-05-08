@@ -10,11 +10,11 @@ import { profileStore } from "@store"
 import { useEffect } from "react"
 
 export const MainLayout = () => {
-  const { apiProfile } = profileStore()
+  const apiProfile = profileStore((s) => s.apiProfile)
 
   useEffect(() => {
     apiProfile()
-  }, [])
+  }, [apiProfile])
 
   return (
     <div className={`${styles.layout}`}>

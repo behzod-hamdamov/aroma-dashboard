@@ -10,18 +10,25 @@ import { modalStore } from "@store";
 
 import { useCallback } from "react";
 
+import { useShallow } from "zustand/shallow";
+
 export const LogoutModal = () => {
-  const { modals, closeModal } = modalStore();
-  
+  const { modals, closeModal } = modalStore(
+    useShallow((s) => ({
+      modals: s.modals,
+      closeModal: s.closeModal,
+    }))
+  );
+
   const handleLogout = useCallback(() => {
     apiLogout();
     closeModal("logoutModal");
   }, []);
-  
+
   if (!modals["logoutModal"]) return null;
 
   return (
-    <Overlay modalName={"logoutModal"} >
+    <Overlay modalName={"logoutModal"}>
       <div
         className={`${styles.style_modal} max-w-110 w-full gap-8`}
         onClick={(e) => {

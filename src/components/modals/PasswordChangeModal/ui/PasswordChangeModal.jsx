@@ -12,8 +12,15 @@ import { apiChangePassword } from "@api";
 
 import { modalStore } from "@store";
 
+import { useShallow } from "zustand/shallow";
+
 export const PasswordChangeModal = () => {
-  const { modals, closeModal } = modalStore();
+  const { modals, closeModal } = modalStore(
+    useShallow((s) => ({
+      modals: s.modals,
+      closeModal: s.closeModal,
+    }))
+  );
   const { 
     formErrors, 
     setFormErrors, 

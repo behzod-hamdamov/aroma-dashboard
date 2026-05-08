@@ -7,16 +7,23 @@ import { profileStore } from "@store";
 import { Loader } from "@components/Loader";
 import { HeaderDropdown } from "../components/";
 
-import { ArrowRightIcon } from "@components/icons";
+import { ArrowRightIcon } from "@icon-components";
 import { UserIcon } from "../icons/";
 
+import { useShallow } from "zustand/shallow";
+
 export const Header = () => {
-  const { user, isLoading } = profileStore();
+  const { user, isLoading } = profileStore(
+    useShallow((s) => ({
+      user: s.user,
+      isLoading: s.isLoading,
+    }))
+  )
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = useCallback(() => {
     setDropdown((prev) => !prev);
-  });
+  }, []);
 
   return (
     <header className={`${styles.header}`}>

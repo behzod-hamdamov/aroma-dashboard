@@ -7,7 +7,7 @@ import { memo } from "react";
 import { modalStore } from "@store";
 
 export const Overlay = memo(({ children, modalName }) => {
-  const { closeModal } = modalStore()
+  const { closeModal } = modalStore((s) => s.closeModal)
 
   return createPortal(
     <div className={`${styles.style_overlay}`} onClick={() => closeModal(modalName)}>
