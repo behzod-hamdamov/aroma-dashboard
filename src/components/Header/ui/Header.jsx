@@ -53,7 +53,6 @@ export const Header = () => {
       </div>
       {dropdown && (
         <HeaderDropdown
-          user={user}
           handleModal={handleModal}
           handleClick={handleClick}
         />

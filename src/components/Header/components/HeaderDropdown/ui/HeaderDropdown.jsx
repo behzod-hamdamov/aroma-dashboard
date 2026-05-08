@@ -8,7 +8,11 @@ import { UserIcon, ExitIcon } from "../../../icons";
 
 import { styles as parentStyles } from "../../../ui/styles";
 
-export const HeaderDropdown = memo(({ user, handleModal, handleClick }) => {
+import { profileStore } from "@store"
+
+export const HeaderDropdown = memo(({ handleModal, handleClick }) => {
+  const { user } = profileStore()
+
   return (
     <ul className={`${styles.dropdown}`}>
       <li className={`${styles.dropdown_user_info}`}>

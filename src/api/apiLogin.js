@@ -7,7 +7,7 @@ import { Toast, tokenService } from "@utils"
 export const apiLogin = async (loginData) => {
   try {
     const { data } = await api.post(endpoints.auth.login, loginData)
-    tokenService.setTokens(data.data.token, data.data.refreshToken)
+    tokenService.setTokens(data.data.token)
     if (data?.success) {
       Toast.success("Akkauntga kirdingiz !")
     }
