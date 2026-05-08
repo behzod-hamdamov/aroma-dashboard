@@ -1,2 +1,1 @@
-export * from "./PasswordChangeModal"
-export * from "./LogoutModal"
+export * from "./ModalRegistry/ModalRegistry"

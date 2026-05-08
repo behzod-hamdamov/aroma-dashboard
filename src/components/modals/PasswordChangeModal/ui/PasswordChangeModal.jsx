@@ -10,8 +10,16 @@ import { useState } from "react";
 
 import { apiChangePassword } from "@api";
 
-export const PasswordChangeModal = ({ handleModal }) => {
-  const { formErrors, setFormErrors, handleInputChange, handleSubmit } = useForm(
+import { modalStore } from "@store";
+
+export const PasswordChangeModal = () => {
+  const { modals, closeModal } = modalStore();
+  const { 
+    formErrors, 
+    setFormErrors, 
+    handleInputChange, 
+    handleSubmit 
+  } = useForm(
     {
       old_password: "",
       password: "",
@@ -19,24 +27,22 @@ export const PasswordChangeModal = ({ handleModal }) => {
     },
     onSubmit
   );
-  const [matchingError, setMatchingError] = useState("")
+  const [matchingError, setMatchingError] = useState("");
 
   async function onSubmit(formData) {
     if (formData["password"] !== formData["confirm_password"]) {
-      setFormErrors(prev => ({...prev, ["confirm_password"]: true}))
-      setMatchingError("Parol bilan mos kelmadi")
+      setFormErrors((prev) => ({ ...prev, ["confirm_password"]: true }));
+      setMatchingError("Parol bilan mos kelmadi");
     } else {
-      const success = await apiChangePassword(formData)
-      if (success) handleModal("passwordModal")
+      const success = await apiChangePassword(formData);
+      if (success) closeModal("passwordModal");
     }
   }
 
+  if (!modals["passwordModal"]) return null;
+
   return (
-    <Overlay
-      handleClose={() => {
-        handleModal("passwordModal");
-      }}
-    >
+    <Overlay modalName={"passwordModal"}>
       <form
         className={`${styles.style_modal} max-w-296.75 w-full m-[0_24px] pt-9.5 pb-9.5`}
         onClick={(e) => {
@@ -82,7 +88,7 @@ export const PasswordChangeModal = ({ handleModal }) => {
           <button
             className={`${styles.style_button_secondary}`}
             onClick={(e) => {
-              handleModal("passwordModal");
+              closeModal("passwordModal");
               e.preventDefault();
             }}
           >

@@ -3,7 +3,19 @@ import { styles } from "./styles"
 
 import {Footer, Sidebar, Header} from "@components"
 
+import { ModalRegistry } from "@modals"
+
+import { profileStore } from "@store"
+
+import { useEffect } from "react"
+
 export const MainLayout = () => {
+  const { apiProfile } = profileStore()
+
+  useEffect(() => {
+    apiProfile()
+  }, [])
+
   return (
     <div className={`${styles.layout}`}>
       <Sidebar />
@@ -12,6 +24,7 @@ export const MainLayout = () => {
         <Outlet />
         <Footer text={"© 2024 Developed by Open Web"} textColor={"brand"} />
       </div>
+      <ModalRegistry />
     </div>
   )
 }

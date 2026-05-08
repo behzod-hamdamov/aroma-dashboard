@@ -8,9 +8,10 @@ import { UserIcon, ExitIcon } from "../../../icons";
 
 import { styles as parentStyles } from "../../../ui/styles";
 
-import { profileStore } from "@store"
+import { profileStore, modalStore } from "@store"
 
-export const HeaderDropdown = memo(({ handleModal, handleClick }) => {
+export const HeaderDropdown = memo(({ handleClick }) => {
+  const { openModal } = modalStore()
   const { user } = profileStore()
 
   return (
@@ -19,7 +20,6 @@ export const HeaderDropdown = memo(({ handleModal, handleClick }) => {
         <div className={`${parentStyles.user_border}`}>
           <UserIcon className={parentStyles.icon} />
         </div>
-
         <div className={`${parentStyles.info_box}`}>
           <span className={`${parentStyles.role_span} `}>{user.role}</span>
           <div className={`${parentStyles.dropdown_head}`}>
@@ -40,7 +40,7 @@ export const HeaderDropdown = memo(({ handleModal, handleClick }) => {
         <button
           className={`${styles.dropdown_option}`}
           onClick={() => {
-            handleModal("passwordModal");
+            openModal("passwordModal");
             handleClick();
           }}
         >
@@ -51,7 +51,7 @@ export const HeaderDropdown = memo(({ handleModal, handleClick }) => {
         <button
           className={`${styles.dropdown_option}`}
           onClick={() => {
-            handleModal("logoutModal");
+            openModal("logoutModal");
             handleClick();
           }}
         >

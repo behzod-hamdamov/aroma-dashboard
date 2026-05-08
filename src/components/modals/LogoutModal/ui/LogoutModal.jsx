@@ -6,18 +6,22 @@ import { CloseMarkIcon } from "@icon-components";
 
 import { apiLogout } from "@api";
 
-export const LogoutModal = ({ handleModal }) => {
-  const handleLogout = async () => {
+import { modalStore } from "@store";
+
+import { useCallback } from "react";
+
+export const LogoutModal = () => {
+  const { modals, closeModal } = modalStore();
+  
+  const handleLogout = useCallback(() => {
     apiLogout();
-    handleModal("logoutModal");
-  };
+    closeModal("logoutModal");
+  }, []);
+  
+  if (!modals["logoutModal"]) return null;
 
   return (
-    <Overlay
-      handleClose={() => {
-        handleModal("logoutModal");
-      }}
-    >
+    <Overlay modalName={"logoutModal"} >
       <div
         className={`${styles.style_modal} max-w-110 w-full gap-8`}
         onClick={(e) => {
@@ -29,7 +33,7 @@ export const LogoutModal = ({ handleModal }) => {
           <button
             className="cursor-pointer"
             onClick={() => {
-              handleModal("logoutModal");
+              closeModal("logoutModal");
             }}
           >
             <CloseMarkIcon />
@@ -42,7 +46,7 @@ export const LogoutModal = ({ handleModal }) => {
           <button
             className={`${styles.style_button_secondary}`}
             onClick={() => {
-              handleModal("logoutModal");
+              closeModal("logoutModal");
             }}
           >
             Bekor qilish

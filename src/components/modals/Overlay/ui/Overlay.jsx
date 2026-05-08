@@ -2,11 +2,17 @@ import { styles } from "@styles";
 
 import { createPortal } from "react-dom";
 
-export const Overlay = ({ children, handleClose }) => {
+import { memo } from "react";
+
+import { modalStore } from "@store";
+
+export const Overlay = memo(({ children, modalName }) => {
+  const { closeModal } = modalStore()
+
   return createPortal(
-    <div className={`${styles.style_overlay}`} onClick={handleClose}>
+    <div className={`${styles.style_overlay}`} onClick={() => closeModal(modalName)}>
       {children}
     </div>,
     document.getElementById("portal-root")
   );
-};
+});

@@ -1,35 +1,22 @@
 import { styles } from "./styles";
 
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { profileStore } from "@store";
 
 import { Loader } from "@components/Loader";
-import { PasswordChangeModal, LogoutModal } from "@modals";
 import { HeaderDropdown } from "../components/";
 
 import { ArrowRightIcon } from "@components/icons";
 import { UserIcon } from "../icons/";
 
 export const Header = () => {
-  const { user, isLoading, apiProfile } = profileStore();
+  const { user, isLoading } = profileStore();
   const [dropdown, setDropdown] = useState(false);
-  const [modals, setModals] = useState({
-    passwordModal: false,
-    logoutModal: false,
-  });
 
-  useEffect(() => {
-    apiProfile();
-  }, []);
-
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     setDropdown((prev) => !prev);
-  };
-
-  const handleModal = (modalName) => {
-    setModals((prev) => ({ ...prev, [modalName]: !modals[modalName] }));
-  };
+  });
 
   return (
     <header className={`${styles.header}`}>
@@ -53,15 +40,8 @@ export const Header = () => {
       </div>
       {dropdown && (
         <HeaderDropdown
-          handleModal={handleModal}
           handleClick={handleClick}
         />
-      )}
-      {modals.passwordModal && (
-        <PasswordChangeModal handleModal={handleModal} />
-      )}
-      {modals.logoutModal && (
-        <LogoutModal handleModal={handleModal} />
       )}
       {isLoading && <Loader global />}
     </header>
