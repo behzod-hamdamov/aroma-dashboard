@@ -20,6 +20,7 @@ export default defineConfig({
       "@modals": path.resolve(__dirname, "./src/components/modals"),
       "@styles": path.resolve(__dirname, "./src/assets/styles/styles.js"),
       "@inputs": path.resolve(__dirname, "./src/components/inputs"),
+      "@tables": path.resolve(__dirname, "./src/components/tables")
     }
   },
   plugins: [react(), tailwindcss()],

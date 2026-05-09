@@ -1,7 +1,5 @@
 import { memo } from "react";
 
-import { NavLink } from "react-router";
-
 import { styles } from "./styles";
 
 import { links } from "../links/links";

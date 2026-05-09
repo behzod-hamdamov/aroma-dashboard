@@ -11,4 +11,12 @@ export const styles = {
   style_input_error_text: "text-[11px] italic font-(--font-roboto) text-(--error-color)",
   style_modal_paragraph: "text-center font-normal text-[16px] leading-[23.1px] font-(family-name:--font-roboto) text-(--body-color)",
   style_table_regular_head_title: "leading-8 font-(family-name:--font-nunito) text-[28px] font-bold tracking-[-0.84px] text-(--theme-color-secondary) mb-2",
-} 
+  style_box: "w-full p-6 rounded-[4px] border border-(--border-color) bg-(--bg-none)",
+  style_table_head_title: "text-(--theme-color-secondary) tracking-[-0.2px] leading-5.5 text-[20px] font-bold font-(family-name:--font-nunito) p-[4px_0_23px]",
+  style_table_vector: "w-full h-0.25 bg-(--border-color)",
+  style_table_primary: "w-full rounded-[6px] border border-(--border-color) overflow-hidden flex flex-col",
+  style_table_primary_row: "p-[12px_20px] flex items-center",
+  style_table_primary_col: "min-w-100 flex gap-2.5 min-h-6 font-(family-name:--font-roboto) leading-[23.1px] text-[14px]",
+  style_table_primary_col_title: "grow font-normal text-(--theme-color-gray)",
+  style_table_primary_col_body: "grow-3 font-semibold text-(--theme-color-secondary)",
+}
