@@ -16,7 +16,7 @@ import {
 import { objectMap } from "@utils";
 
 export const ProfileInfoPage = () => {
-  const user = profileStore(s => s.user);
+  const user = profileStore((s) => s.user);
 
   return (
     <main className={`${styles.profile_info_page}`}>
@@ -27,9 +27,11 @@ export const ProfileInfoPage = () => {
             {user.full_name}
           </h3>
           <TablePrimary>
-            {objectMap(user, ([key, value], i) => (
+            {objectMap(user, ([key, value], i, arr) => (
               <TablePrimaryRow
-                className={`${i % 2 === 0 ? "bg-(--bg-table-row-color)" : ""}`}
+                className={`${i % 2 === 0 ? `bg-(--bg-table-row-color)` : ""} ${
+                  arr[i + 1] ? globalStyles.style_table_vector : ""
+                }`}
                 key={i}
               >
                 <TablePrimaryCol title>{key}</TablePrimaryCol>

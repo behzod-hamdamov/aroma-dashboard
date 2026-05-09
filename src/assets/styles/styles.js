@@ -26,7 +26,7 @@ export const styles = {
   // table stillari
   style_box: "w-full p-6 rounded-[4px] border border-(--border-color) bg-(--bg-none)",
   style_table_head_title: "text-(--theme-color-secondary) tracking-[-0.2px] leading-5.5 text-[20px] font-bold font-(family-name:--font-nunito) p-[4px_0_23px]",
-  style_table_vector: "w-full h-0.25 bg-(--border-color)",
+  style_table_vector: "border-b border-(--border-color)",
   style_table_primary: "w-full rounded-[6px] border border-(--border-color) overflow-hidden flex flex-col",
   style_table_primary_row: "p-[12px_20px] flex items-center",
   style_table_primary_col: "min-w-100 flex gap-2.5 min-h-6 font-(family-name:--font-roboto) leading-[23.1px] text-[14px]",
