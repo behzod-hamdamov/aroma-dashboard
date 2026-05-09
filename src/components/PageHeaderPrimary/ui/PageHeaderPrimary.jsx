@@ -14,7 +14,7 @@ export const PageHeaderPrimary = () => {
   return (
     <div className="flex justify-between">
       <div className="flex flex-col">
-        <h1 className={`${globalStyles.style_table_regular_head_title}`}>
+        <h1 className={`${globalStyles.style_page_head_title}`}>
           {pageData.pageName}
         </h1>
         <BreadCrumps />

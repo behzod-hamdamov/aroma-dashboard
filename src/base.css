@@ -19,7 +19,7 @@
     --bg-none: white;
     --bg-primary: rgba(245, 246, 250, 1);
     --bg-hover-color: rgb(235 238 242);
-    --bg-table-row-color: rgba(244, 246, 250, 0.7),
+    --bg-table-row-color: rgba(244, 246, 250, 0.7);
     --bg-overlay: rgba(0, 0, 0, 0.4);
 
     /* border ranglari */
