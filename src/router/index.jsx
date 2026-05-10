@@ -4,7 +4,13 @@ import { createBrowserRouter } from "react-router";
 import { ROUTES } from "./routes/routes";
 
 // sahifalar
-import { LoginPage, HomePage, NotFoundPage, ProfileInfoPage } from "@pages/";
+import {
+  LoginPage,
+  HomePage,
+  NotFoundPage,
+  ProfileInfoPage,
+  BannersPage,
+} from "@pages/";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { MainLayout } from "@layouts/";
 
@@ -17,22 +23,26 @@ export const router = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        element: <MainLayout/>,
+        element: <MainLayout />,
         children: [
           {
             path: "/",
             element: <HomePage />,
           },
           {
-            path: "/profile-info",
+            path: ROUTES.PROFILE_INFO,
             element: <ProfileInfoPage />,
-          }
-        ]
-      }
+          },
+          {
+            path: ROUTES.BANNERS,
+            element: <BannersPage />,
+          },
+        ],
+      },
     ],
   },
   {
     path: "*",
-    element: <NotFoundPage />
-  }
-])
+    element: <NotFoundPage />,
+  },
+]);

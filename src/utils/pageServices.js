@@ -4,12 +4,18 @@ export const pageServices = () => {
   const user = profileStore(s => s.user);
 
   const pagesData = {
+    // profile page
     "/profile-info": {
       pageName: "Profil ma’lumot",
       breadCrumps: [
         {path: "/", title: "Asosiy"},
         {path: "/profile-info", title: user?.["full_name"]}
       ],
+    },
+
+    // banners page
+    "/banners": {
+      pageName: "Bannerlar menyusi"
     },
     "/banner-info": {
       pageName: "Banner haqida malumot",
@@ -18,19 +24,24 @@ export const pageServices = () => {
         {path: "/banners-info", title: "banner ma’lumoti"},
       ],
     },
-    "/banner-info/add": {
+    "/banners/add": {
       pageName: "Banner qo'shish",
       breadCrumps: [
         {path: "/banners", title: "Bannerlar menyusi"},
         {path: "/banners/add", title: "banner qo'shish"},
       ],
     },
-    "/banner-info/edit/:id": {
+    "/banners/edit/:id": {
       pageName: "Banner o’zgartirish",
       breadCrumps: [
         {path: "/banners", title: "Bannerlar menyusi"},
         {path: "", title: "o'zgartirish"},
       ],
+    },
+
+    // notifications page
+    "notifications": {
+      pageName: "Bildirishnomalar"
     },
     "notification-info": {
       pageName: "Bildirishnoma haqida ma’lumot",
@@ -39,14 +50,14 @@ export const pageServices = () => {
         {path: "/notification-info", title: "Bildirishnoma haqida ma’lumot"},
       ],
     },
-    "notification-info/add": {
+    "notifications/add": {
       pageName: "Bildirishnoma qo'shish",
       breadCrumps: [
         {path: "/notification", title: "Bildirishnomalar"},
         {path: "/notification-info", title: "Bildirishnoma qo'shish"},
       ],
     },
-    "notification-info/edit/:id": {
+    "notifications/edit/:id": {
       pageName: "Bildirishnomani o'zgartirish",
       breadCrumps: [
         {path: "/notification", title: "Bildirishnomalar"},

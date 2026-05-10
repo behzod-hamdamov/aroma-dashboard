@@ -6,5 +6,8 @@ export const endpoints = {
   profile: {
     profile_info: "/admin/profile/info",
     profile_password_change: "/admin/profile/change/password",
-  }
+  },
+  banners: {
+    banners_get_all: "/admin/banners"
+  },
 }

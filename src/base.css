@@ -36,4 +36,12 @@
       user-select: none;
     }
   }
+
+  html, body {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 }
