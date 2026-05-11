@@ -21,7 +21,8 @@ export default defineConfig({
       "@styles": path.resolve(__dirname, "./src/assets/styles/styles.js"),
       "@inputs": path.resolve(__dirname, "./src/components/inputs"),
       "@tables": path.resolve(__dirname, "./src/components/tables"),
-      "@enums": path.resolve(__dirname, "./src/enums/")
+      "@enums": path.resolve(__dirname, "./src/enums/"),
+      "@buttons": path.resolve(__dirname, "./src/components/buttons")
     }
   },
   plugins: [react(), tailwindcss()],

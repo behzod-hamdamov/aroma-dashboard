@@ -1,3 +1,5 @@
 export * from "./ArrowRightIcon"
 export * from "./CloseMarkIcon"
 export * from "./MoveLeftIcon"
+export * from "./SearchIcon"
+export * from "./PlusIcon"

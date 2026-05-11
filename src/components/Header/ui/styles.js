@@ -1,5 +1,5 @@
 export const styles = {
-  header: "flex justify-end relative p-[16px_30px] w-full min-h-16 bg-(--bg-none) border-b border-(--border-color) sticky top-0",
+  header: "flex justify-end relative p-[16px_30px] w-full min-h-16 bg-(--bg-none) border-b border-(--border-color) sticky top-0 z-4",
   icon: "fill-(--color-none)",
   user_border: "bg-(--brand-color) p-2.25 rounded-full",
   settings: "flex items-center gap-4 cursor-pointer",
